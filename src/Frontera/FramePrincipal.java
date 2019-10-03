@@ -1,5 +1,9 @@
 package Frontera;
 
+import Entidad.Sistema;
+import Entidad.Usuario;
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,15 +14,19 @@ package Frontera;
  *
  * @author usuario
  */
-public class LoginUsuario extends javax.swing.JFrame {
+public class FramePrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form LoginUsuario
      */
     private final Registro registro = new Registro();
     private final Ingreso ingreso = new Ingreso();
-    public LoginUsuario() {
+    
+    public static Sistema sistema = new Sistema();
+    
+    public FramePrincipal() {
         initComponents();
+        inicializacion();
     }
 
     /**
@@ -133,23 +141,56 @@ public class LoginUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginUsuario().setVisible(true);
+                new FramePrincipal().setVisible(true);
             }
         });
     }
+    
+    public void inicializacion(){
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+    // Creacion usuarios
+    Usuario a = new Usuario();
+    Usuario b = new Usuario();
+    Usuario c = new Usuario();
+    
+    //Datos
+    
+    a.setNombre("Juan");
+    a.setPassword("1234");
+    b.setNombre("Pedro");
+    b.setPassword("123");
+    c.setNombre("Maria");
+    c.setPassword("12345");
+    
+    usuarios.add(a);
+    usuarios.add(b);
+    usuarios.add(c);
+    
+    sistema.setUsuarios(usuarios);
+           
+        for (Usuario u : sistema.getUsuarios()) {
+            System.out.println(u.getNombre());
+            System.out.println(u.getPassword());
+            System.out.println("--------------");
+            
+        }
+    
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
