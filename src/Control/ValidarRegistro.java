@@ -23,10 +23,10 @@ public class ValidarRegistro {
     public boolean validarNombreRepetido(String nombre){
     for(Usuario u : sistema.getUsuarios()){
             if(u.getNombre().equals(nombre)){
-            return false; // en caso de que el nombre este repetido    
+                return false; // en caso de que el nombre este repetido    
             }
         }
-    return false;
+    return true;
     }
     
     public boolean verificarLongitudNombre (String nombre){
@@ -37,10 +37,24 @@ public class ValidarRegistro {
     }
     
     public boolean verificarContraseña(String password1,String password2){
-        if(password1 == password2){
-        return true;
-        }else{
-            return false;
+        return(password1.equals(password2));
+    }
+    public String VerificarRegistro(Usuario usercach, String password2){
+        if(!validarNombreRepetido(usercach.getNombre())){
+            return("El nombre ya se encuentra ocupado");
         }
+        if(!verificarLongitudNombre(usercach.getNombre())){
+            return("No cumple con la Longitud del nombre el usuario");
+        }
+        if(!verificarLongitudPassword(usercach.getPassword())){
+            return("No cumple con la longitud de la contraseña");
+        }
+        if(!verificarContraseña(usercach.getPassword(), password2)){
+            return("Las contraseñas no son iguales");
+        }
+        return("Usuario registrado con exito");
+    }
+    public boolean ExitoRegistro(Usuario usercach, String password2){
+        return(validarNombreRepetido(usercach.getNombre()) && verificarLongitudNombre(usercach.getNombre()) && verificarLongitudPassword(usercach.getPassword()) && verificarContraseña(usercach.getPassword(), password2));
     }
 }

@@ -5,7 +5,7 @@
  */
 package Frontera;
 
-import Control.ValidarLogin;
+import Control.ValidarRegistro;
 import Entidad.Usuario;
 
 /**
@@ -106,17 +106,17 @@ public class Registro extends javax.swing.JPanel {
 
     private void bt_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registrarActionPerformed
         // TODO add your handling code here:
-        
-        
-    //    ValidarRegistro validar = new ValidarLogin();
-        System.out.println("-----------------");
-      
-      //  System.out.println(resultado);
-        
-        
+        ValidarRegistro validar = new ValidarRegistro();
         Usuario usuario = new Usuario();            // En caso que sea exitoso
         usuario.setNombre(nombreTF.getText());
         usuario.setPassword(contraseniaTF.getText());
+        FramePrincipal frameprin = new FramePrincipal();
+        String resultado = validar.VerificarRegistro(usuario, validarContraseniaTF.getText());
+        System.out.println("-*-*-*--------------");
+        System.out.println(resultado);
+        if(validar.ExitoRegistro(usuario, validarContraseniaTF.getText())){
+         // añadir al arreglo el usuario
+        }
     }//GEN-LAST:event_bt_registrarActionPerformed
 
 
