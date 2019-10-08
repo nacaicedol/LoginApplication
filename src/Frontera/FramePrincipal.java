@@ -21,9 +21,9 @@ public class FramePrincipal extends javax.swing.JFrame {
      */
     private final Registro registro = new Registro();
     private final Ingreso ingreso = new Ingreso();
-    
+    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     public static Sistema sistema = new Sistema();
-    
+     
     public FramePrincipal() {
         initComponents();
         inicializacion();
@@ -161,7 +161,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
     
     public void inicializacion(){
-        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     // Creacion usuarios
     Usuario a = new Usuario();
     Usuario b = new Usuario();

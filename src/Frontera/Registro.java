@@ -116,6 +116,7 @@ public class Registro extends javax.swing.JPanel {
         System.out.println(resultado);
         if(validar.ExitoRegistro(usuario, validarContraseniaTF.getText())){
          // añadir al arreglo el usuario
+         frameprin.usuarios.add(usuario);
         }
     }//GEN-LAST:event_bt_registrarActionPerformed
 
