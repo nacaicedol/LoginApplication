@@ -44,7 +44,7 @@ public class ValidarRegistro {
             return("El nombre ya se encuentra ocupado");
         }
         if(!verificarLongitudNombre(usercach.getNombre())){
-            return("No cumple con la Longitud del nombre el usuario");
+            return("No cumple con la Longitud del nombre el usuario"); 
         }
         if(!verificarLongitudPassword(usercach.getPassword())){
             return("No cumple con la longitud de la contraseña");
