@@ -5,10 +5,11 @@
  */
 package Control;
 
-import Entidad.Sistema;
+import DAO.UsuarioDAO;
+//import Entidad.Sistema;
 import Entidad.Usuario;
-import Frontera.FramePrincipal;
-import sun.security.util.Password;
+//import Frontera.FramePrincipal;
+//import sun.security.util.Password;
 
 /**
  *
@@ -16,7 +17,7 @@ import sun.security.util.Password;
  */
 public class ValidarLogin {
 
-    private Sistema sistema = FramePrincipal.sistema;
+    private UsuarioDAO dao = new UsuarioDAO();
     
     public ValidarLogin() {
     }
@@ -28,14 +29,17 @@ public class ValidarLogin {
         if(!verificarLongitudPassword(usuario.getPassword())){
          return("Longitud contrasenia incorrecta");   
         }
-        for(Usuario u : sistema.getUsuarios()){
+   /*     for(Usuario u : sistema.getUsuarios()){
             if(u.getNombre().equals(usuario.getNombre()) && u.getPassword().equals(usuario.getPassword())){
             return ("Bienvenidos");    
             }
+        }*/
+        if(dao.leer(usuario) != null){
+            return("Bienvenidos");
         }
         return("Datos incorrectos");
     }
-    
+   
     public boolean verificarLongitudNombre (String nombre){
         return (nombre.length() > 1 && nombre.length() <= 6);
     }
